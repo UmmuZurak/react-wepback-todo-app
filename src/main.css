@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Piedra');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --lime-green: hsl(163, 72%, 41%);
+  --app-bg: hsl(232, 19%, 15%);
+  --todo-container: hsl(230, 17%, 14%);
+  --todo-item: hsl(228, 28%, 20%);
+  --todo-item-hover: hsl(229, 24%, 22%);
+  --toggle: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+  --white-text: hsl(0, 0%, 100%);
+  --desaturated-blue-text: hsl(228, 34%, 66%);
+  --add-button: hsl(195, 100%, 50%);
+}
+
+[data-theme='light'] {
+  --app-bg: hsl(225, 100%, 98%);
+  --todo-container: hsl(0, 0%, 100%);
+  --todo-item: hsl(227, 47%, 96%);
+  --todo-item-hover: hsl(225, 21%, 89%);
+  --toggle: hsl(230, 22%, 74%);
+  --white-text: hsl(230, 17%, 14%);
+  --desaturated-blue-text: hsl(228, 12%, 44%);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.app {
+  width: 300px;
+  height: 90vh;
+  background: var(--app-bg);
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* header styling */
+.header {
+  height: 10%;
+  margin-bottom: 0.2rem;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  font-family: 'Piedra', sans-serif;
+  color: hsl(195, 100%, 50%);
+}
+
+.todo-time {
+  color: var(--white-text);
+}
+/* end of header styling */
+
+/* mode styling */
+.toggle input[type='checkbox'] {
+  display: none;
+}
+
+.toggle label {
+  background-image: var(--toggle);
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: all ease-in-out 0.3s;
+  width: 50px;
+  height: 25px;
+}
+
+.toggle label::after {
+  background: var(--todo-item);
+  border-radius: 50%;
+  content: ' ';
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  transition: all ease-in-out 0.3s;
+  width: 21px;
+  height: 21px;
+}
+
+.toggle input[type='checkbox']:checked ~ label {
+  background: var(--desaturated-blue-text);
+}
+
+.toggle input[type='checkbox']:checked ~ label::after {
+  background: hsl(225, 100%, 98%);
+  transform: translateX(25px);
+}
+
+/* end of mode styling */
+
+/* todo styling */
+.todoContainer {
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  width: 98%;
+  margin-bottom: 0.2rem;
+  background: var(--todo-container);
+  border-radius: 1.5rem;
+}
+
+.todoList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0.5rem;
+  padding: 0.4rem;
+  border-radius: 1.3rem;
+  background: var(--todo-item);
+}
+
+.todo-item > span {
+  margin-left: 0.5rem;
+  font-size: 1.1em;
+  color: var(--white-text);
+}
+
+.fa-circle {
+  color: var(--lime-green);
+  font-size: 1.3em;
+}
+
+.fa-check-circle {
+  color: var(--lime-green);
+  font-size: 1.3em;
+}
+
+.fa-trash-alt {
+  display: flex;
+  margin-left: auto;
+  color: var(--lime-green);
+  font-size: 1.3em;
+}
+
+.no-todos {
+  color: var(--white-text);
+  font-size: 1.2rem;
+  margin: 0.5rem;
+}
+/* end of todo styling */
+
+/* input styling */
+.inputContainer {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  margin-top: -3.5rem;
+}
+
+.form:hover {
+  border: 1px solid var(--add-button);
+  border-radius: 2rem;
+}
+
+.form:hover > .input {
+  width: 90%;
+  padding-left: 0.8rem;
+}
+
+.form > .fas {
+  border-radius: 50%;
+  background: var(--add-button);
+  padding: 0.8rem 0.9rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  border: none;
+  outline: none;
+  background: none;
+  width: 0;
+  transition: 0.4s;
+}
+
+.input::placeholder {
+  color: var(--white-text);
+  font-size: 1em;
+}
+
+.input {
+  color: var(--white-text);
+  font-size: 1em;
+}
+/* end of input styling */
